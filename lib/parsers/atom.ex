@@ -36,6 +36,7 @@ defmodule Feedme.Parsers.Atom do
   def parse_entry(node) do
     %Entry{
       title: node |> XmlNode.first("title") |> XmlNode.text,
+      content: node |> XmlNode.first("content") |> XmlNode.text,
       link: node |> XmlNode.first("link") |> XmlNode.attr("href"),
       publication_date: node |> XmlNode.first("updated") |> parse_datetime(@date_format),
       description: node |> XmlNode.first("summary") |> XmlNode.text

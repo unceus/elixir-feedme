@@ -47,6 +47,7 @@ defmodule Feedme do
               author: nil,
               categories: [],
               comments: nil,
+              content: nil,
               enclosure: nil,
               guid: nil,
               publication_date: nil,
@@ -54,7 +55,7 @@ defmodule Feedme do
   end
 
   defmodule Feed do
-    defstruct meta: nil, 
+    defstruct meta: nil,
               entries: nil
   end
 

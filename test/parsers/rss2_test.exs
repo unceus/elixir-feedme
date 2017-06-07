@@ -124,7 +124,8 @@ defmodule Feedme.Test.Parsers.RSS2 do
         year: 2015
       },
       source: nil,
-      title: "Elixir Streams"
+      title: "Elixir Streams",
+      content: "some suuuuuuuuuuper long content"
     }
   end
 

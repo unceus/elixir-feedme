@@ -61,7 +61,7 @@ defmodule Feedme.Parsers.RSS2 do
   end
 
   def parse_entry(node) do
-    ignore_fields = [:categories, :enclosure, :publication_date]
+    ignore_fields = [:categories, :enclosure, :publication_date, :content]
     entry = parse_into_struct(node, %Entry{}, ignore_fields)
 
     categories = XmlNode.children_map(node, "category", &XmlNode.text/1)
@@ -72,10 +72,13 @@ defmodule Feedme.Parsers.RSS2 do
     publication_date = XmlNode.first_try(node, ["pubDate", "publicationDate"])
                        |> parse_datetime
 
+    content = XmlNode.first(node, "content:encoded") |> XmlNode.text
+
     %{entry |
       categories: categories,
       enclosure: enclosure,
-      publication_date: publication_date
+      publication_date: publication_date,
+      content: content
     }
   end
 end
